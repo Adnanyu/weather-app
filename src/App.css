@@ -1,38 +1,389 @@
-.App {
-  text-align: center;
-}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+@font-face {
+  font-family: "sanFransisco";
+  src: local("sanFransisco"),
+   url("./assets/SFUIText-Light.otf") format("truetype");
   }
+/*the main section*/
+.day{
+  color:#fff;
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.night{
+  color:#fff;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+  background-blend-mode: multiply,multiply;
+}
+.App {
+  font-family: "sanFransisco";
+  font-weight: 300;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+}
+main {
+  display: grid;
+  grid-template-columns: minmax(auto, 500px) minmax(auto, 600px );
+  grid-template-areas:
+    'main  side'
+    'main  side'
+    'foot  side';
+  column-gap: 50px;
+  margin: 40px auto;
+
+}
+
+.main-content {
+  height: 300px;
+  max-width: 400px;
+  grid-area: main;
+  font-size: 2rem;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  text-align: center;
+}
+.content > * {
+  padding: 5px;
+}
+.current-temp{
+  font-size: 6rem;
+}
+.forecast-container {
+  grid-area: side;
+}
+
+.hours-container {
+  padding: 5px;
+  grid-area: foot;
+  height: 160px;
+  width: 100%;
+  overflow-y: hidden;
+  background-color: rgba(0, 0, 0, 0.188);
+  border-radius: 15px;
+}
+.hours-container ul {
+  display: flex;
+}
+
+/*search box*/
+.search-container{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  gap: 20px;
+}
+.form{
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  border-radius: 15px;
+  height: 35px;
+  background-color: #fff;
+}
+input{
+  border: unset;
+  outline: none;
+  padding: 7px;
+  width: 25em;
+  line-height: 10px;
+  height: 20px;
+  background-color: #fff;
+}
+.search-container img {
+  height: 20px;
+  cursor: pointer;
+}
+.search-container button{
+  background-color: transparent;
+  border: unset;
+}
+
+
+/*forecast container*/
+.forecast-container{
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.188);
+  border-radius: 15px;
+  padding: 5px;
+}
+.forecast-container img {
+  padding: auto;
+  height: 50px;
+}
+.forecast-container li {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 35px;
+  padding: 5px;
+  margin: 5px;
+  border-bottom: 1px solid #fff;
+}
+.forecast-container li:last-child{
+  border-bottom: unset;
+}
+.forecast-title, .hours-title{
+  padding: 10px;
+  border-bottom: 1px solid #fff;
+}
+/*hours list*/
+.hours-container img{
+  height: 55px;
+}
+.hours-container li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  height: 100px;
+}
+/*switch*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #1c252d;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #1c252d;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.off
+{
+  color: #000;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 70%;
+  font-size: 13px;
+  font-weight: 600;
+}
+.on
+{
   color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  right: 50%;
+  font-size: 13px;
+  font-weight: 600;
 }
 
-.App-link {
-  color: #61dafb;
-}
+input:checked+ .slider .on
+{display: block;}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+input:checked + .slider .off
+{display: none;}
+
+@media (max-width: 750px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-areas:
+      'main'
+      'foot'
+      'side';
+      margin: auto;
+      margin-top: 40px
   }
-  to {
-    transform: rotate(360deg);
+  .hours-container, .forecast-container{
+    margin: 10px 10px ;
+  }
+  .hours-container{
+    width: auto;
+  }
+  input{
+    width: max-content;
   }
 }
