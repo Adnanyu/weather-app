@@ -2,7 +2,7 @@ const WeekForecast = ({ forecast, toggle }) => {
   const weekDays = ['SUN', 'SAT', 'MON', 'TUE', 'WED', 'THU', 'FRI'];
   return (
     <div className='forecast-container'>
-      <h2 className="forecast-title">7 DAYS FORECAST</h2>
+      <h2 className="forecast-title">DAYS FORECAST</h2>
       <ul>
         {forecast.forecastday.map((days) => {
           const d = new Date(days.date);
