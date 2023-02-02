@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     try {
       fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=0f2f8d6684be417aaa8212217232301&q=${city}&days=7&aqi=no&alerts=no`
+        `https://api.weatherapi.com/v1/forecast.json?key=0f2f8d6684be417aaa8212217232301&q=${city}&days=7&aqi=no&alerts=no`
       )
         .then((response) => response.json())
         .then((condition) => setWeather(condition));
